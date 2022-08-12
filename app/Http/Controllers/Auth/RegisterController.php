@@ -16,7 +16,7 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request){
 
-        $requestData = $request->all();
+        $requestData = $request->validated();
 
 
         $requestData['user']['role'] = 'participant';
@@ -33,7 +33,9 @@ class RegisterController extends Controller
 
             DB::commit();
 
-            return 'Conta criada com Sucesso!';
+            return redirect()
+                    ->route('auth.login.create')
+                    ->with('success', 'Conta Criada com Sucesso! Efetue o Login');
 
         } catch (\Exception $exception){
             DB::rollBack();

@@ -5,7 +5,9 @@ use App\Http\Controllers\Auth\{
     RegisterController,
     LoginController
 };
-use App\Http\Controllers\Participant\Dashboard\DashboardController;
+use App\Http\Controllers\Participant\Dashboard\DashboardController as ParticipanteDashboardController;
+use App\Http\Controllers\Organization\Dashboard\DashboardController as OrganizationDashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +35,15 @@ Route::group(['as' => 'auth.'], function(){
 
 });
 
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('participant/dashboard', [ParticipanteDashboardController::class, 'index'])
+        ->name('participant.dashboard.index')
+        ->middleware('role:participant');
 
 
-Route::get('participant/dashboard', [DashboardController::class, 'index'])
-    ->name('participant.dashboard.index')
-    ->middleware('auth');
+    Route::get('organization/dashboard', [OrganizationDashboardController::class, 'index'])
+        ->name('organization.dashboard.index')
+        ->middleware('role:organization');
+});
+
 

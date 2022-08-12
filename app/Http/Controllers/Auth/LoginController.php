@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Services\UserServices;
 
 class LoginController extends Controller
 {
@@ -20,7 +21,8 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($credentials)){
-            return redirect()->route('participant.dashboard.index');
+            $userRole = auth()->user()->role;
+            return redirect(UserServices::getDashboardRouteBasedOnUserRole($userRole));
         }
 
         return redirect()

@@ -2,6 +2,6 @@
 @section('title', 'Dashboard')
 
 @section('contente')
-    Dashboard do Participante
+    Dashboard da Organização
 
 @endsection

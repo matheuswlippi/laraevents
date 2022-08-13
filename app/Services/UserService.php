@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-class UserServices
+class UserService
 {
     public static function getDashboardRouteBasedOnUserRole($userRole){
         if ($userRole === 'participant') {

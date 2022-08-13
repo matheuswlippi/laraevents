@@ -11,7 +11,9 @@
     <title>LaraEvents - @yield('title')</title>
 
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
@@ -74,8 +76,9 @@
                                 <i class="fa fa-user"></i>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <form method="POST" action="{{ route('auth.login.destroy')}}">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <form method="POST" action="{{ route('auth.login.destroy') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -95,10 +98,27 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">@yield('title')</h1>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @if (session()->has('warning'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ session('warning') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
 
                     <main class="pb-5">
                         <!-- CONTEÚDO -->
-                        @yield('contente')
+                        @yield('content')
                     </main>
 
                 </div>

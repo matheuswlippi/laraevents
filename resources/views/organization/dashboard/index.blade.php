@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 @section('title', 'Dashboard')
 
-@section('contente')
+@section('content')
     Dashboard da Organização
 
 @endsection

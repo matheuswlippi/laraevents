@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Services\UserServices;
+use App\Services\UserService
+;
 
 class Role
 {
@@ -14,7 +15,7 @@ class Role
         $userRole = auth()->user()->role;
 
         if($userRole !== $role){
-            return redirect(UserServices::getDashboardRouteBasedOnUserRole($userRole));
+            return redirect(UserService::getDashboardRouteBasedOnUserRole($userRole));
         }
         return $next($request);
     }

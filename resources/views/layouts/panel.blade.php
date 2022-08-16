@@ -156,6 +156,7 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
 
+    @yield('js')
 </body>
 
 </html>
